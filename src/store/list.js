@@ -2,11 +2,11 @@ import Movie from "model/movie";
 
 export default {
     state: {
-        list: [],
+        list: {},
     },
     getters: {
-        movieList() {
-            return this.list;
+        movieList(state) {
+            return state.list;
         },
     },
     mutations: {
@@ -18,9 +18,7 @@ export default {
         async getMovieList(context) {
             try {
                 const res = await Movie.list();
-                res.data.results
-                context.commit("setMovieList", res.data.results);
-                return res;
+                context.commit("setMovieList", res.data);
             } catch (e) {
                 console.error(e);
             }
