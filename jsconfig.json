@@ -6,7 +6,8 @@
 			"assets/*": ["./src/assets/*"],
 			"lib/*": ["./src/lib/*"],
 			"model/*": ["./src/model/*"],
-			"store/*": ["./src/store/*"]
+			"store/*": ["./src/store/*"],
+			"modules/*": ["./src/modules/*"]
 		}
 	}
 }
