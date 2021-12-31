@@ -7,7 +7,6 @@
 </template>
 
 <script>
-import store from "store";
 import popular from "modules/popular/root.vue";
 import logo from "assets/logo.png";
 
@@ -20,9 +19,6 @@ export default {
         return {
             logo,
         };
-    },
-    created() {
-        store.dispatch("getMovieList");
     },
 };
 </script>
