@@ -24,7 +24,7 @@ import store from "store";
 
 import faker from "faker";
 
-import card from "components/cards/card.vue";
+import card from "components/listing/card.vue";
 
 export default {
     components: {
