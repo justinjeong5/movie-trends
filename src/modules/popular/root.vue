@@ -8,7 +8,6 @@
                     <div v-for="(v, index) in movieList"
                          :key="index">
                         <card :title="v.title"
-                              :src="fakerImageUrl"
                               :description="v.overview"
                               buttonName="go" />
                     </div>
@@ -23,8 +22,6 @@
 
 <script>
 import store from "store";
-
-import faker from "faker";
 
 import card from "components/listing/card.vue";
 import header from "components/layout/header.vue";
@@ -43,9 +40,6 @@ export default {
         },
         movieList() {
             return store.getters.movieList.results;
-        },
-        fakerImageUrl() {
-            return faker.image.imageUrl();
         },
         styleObj() {
             return {

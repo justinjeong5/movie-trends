@@ -1,7 +1,7 @@
 <template>
     <div style="margin: 1rem">
         <b-card :title="title"
-                :img-src="src"
+                :img-src="getFakerImage()"
                 :img-alt="alt"
                 img-top
                 :tag="tag"
@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import faker from "faker";
 import OPTIONS from "lib/options";
 
 const { VARIANT, SIZE } = OPTIONS;
@@ -62,6 +63,11 @@ export default {
             return sizeClass[this.size];
         },
     },
+    methods: {
+        getFakerImage() {
+            return faker.image.image();
+        }
+    }
 };
 </script>
 
