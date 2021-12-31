@@ -2,7 +2,6 @@
     <div>
         <div v-if="hasResult">
             <div v-for="(v, index) in movieList"
-                 class=""
                  :key="index">
                 <item :value="v" />
             </div>
