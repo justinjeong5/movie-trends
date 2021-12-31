@@ -10,6 +10,7 @@ const CONSTANTS = {
             "light",
             "dark",
         ],
+        SIZE: ["small", "medium", "large"]
     }
 }
 

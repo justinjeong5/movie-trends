@@ -5,8 +5,7 @@
                 :img-alt="alt"
                 img-top
                 :tag="tag"
-                style="max-width: 20rem;"
-                class="mb-2">
+                :class="classObj">
             <b-card-text>
                 {{ description }}
             </b-card-text>
@@ -21,7 +20,7 @@
 <script>
 import OPTIONS from "lib/options";
 
-const { VARIANT } = OPTIONS;
+const { VARIANT, SIZE } = OPTIONS;
 
 export default {
     props: {
@@ -45,9 +44,35 @@ export default {
                 return VARIANT[v];
             },
         },
+        size: {
+            type: String,
+            default: "medium",
+            validator(v) {
+                return SIZE[v];
+            },
+        },
+    },
+    computed: {
+        classObj() {
+            const sizeClass = {
+                small: "card__size-small",
+                medium: "card__size-medium",
+                large: "card__size-large",
+            };
+            return sizeClass[this.size];
+        },
     },
 };
 </script>
 
 <style lang="scss" scoped>
+.card__size-small {
+    max-width: 15rem;
+}
+.card__size-medium {
+    max-width: 20rem;
+}
+.card__size-large {
+    max-width: 25rem;
+}
 </style>
