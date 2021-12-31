@@ -3,7 +3,11 @@
         <div v-if="hasResult">
             <div v-for="(v, index) in movieList"
                  :key="index">
-                <item :value="v" />
+                <card :title="v.title"
+                      :src="fakerImageUrl"
+                      :description="v.overview"
+                      buttonName="go"
+                      variant="primary" />
             </div>
         </div>
         <div else>
@@ -14,11 +18,17 @@
 
 <script>
 import store from "store";
-import item from "./movie.vue";
+
+import faker from "faker";
+
+import card from "components/cards/card.vue";
 
 export default {
     components: {
-        item,
+        card,
+    },
+    created() {
+        store.dispatch("getMovieList");
     },
     computed: {
         hasResult() {
@@ -27,9 +37,9 @@ export default {
         movieList() {
             return store.getters.movieList.results;
         },
-    },
-    created() {
-        store.dispatch("getMovieList");
+        fakerImageUrl() {
+            return faker.image.imageUrl();
+        }
     },
 };
 </script>
