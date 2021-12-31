@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="margin: 1rem">
         <b-card :title="title"
                 :img-src="src"
                 :img-alt="alt"

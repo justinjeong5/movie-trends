@@ -1,14 +1,17 @@
 <template>
     <div>
         <div v-if="hasResult">
-            <div v-for="(v, index) in movieList"
-                 :key="index">
-                <card :title="v.title"
-                      :src="fakerImageUrl"
-                      :description="v.overview"
-                      buttonName="go"
-                      variant="primary" />
-            </div>
+            <b-container>
+                <b-row :style="styleObj">
+                    <div v-for="(v, index) in movieList"
+                         :key="index">
+                        <card :title="v.title"
+                              :src="fakerImageUrl"
+                              :description="v.overview"
+                              buttonName="go" />
+                    </div>
+                </b-row>
+            </b-container>
         </div>
         <div else>
             {{ "LOADING" }}
@@ -39,7 +42,13 @@ export default {
         },
         fakerImageUrl() {
             return faker.image.imageUrl();
-        }
+        },
+        styleObj() {
+            return {
+                display: "flex",
+                justifyContent: "center"
+            };
+        },
     },
 };
 </script>
