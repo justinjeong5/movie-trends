@@ -1,10 +1,9 @@
-const webpack = require("webpack");
+const { DefinePlugin } = require("webpack");
 const { VueLoaderPlugin } = require("vue-loader");
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require("path");
 const jsconfig = require("./jsconfig.json");
 
-const { DefinePlugin } = webpack;
 const env = require("./env");
 
 const config = {
@@ -26,11 +25,22 @@ const config = {
             },
             {
                 test: /\.vue$/,
-                loader: "vue-loader",
+                use: [
+                    {
+                        loader: "vue-loader",
+                        options: {
+                            hotReload: false,
+                            extractCSS: true,
+                            loaders: {
+                                scss: `vue-style-loader!css-loader!sass-loader`,
+                            },
+                        },
+                    }
+                ],
             },
             {
-                test: /\.css$/i,
-                use: ["style-loader", "css-loader"],
+                test: /\.s?css$/i,
+                use: ["style-loader", "css-loader", "sass-loader"],
             },
             {
                 test: /\.(png|jpe?g|gif)$/i,
