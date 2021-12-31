@@ -1,5 +1,7 @@
 <template>
     <div>
+        <movie-header title="Movie Trends"
+                      lead="World leading movie trending" />
         <div v-if="hasResult">
             <b-container>
                 <b-row :style="styleObj">
@@ -25,10 +27,12 @@ import store from "store";
 import faker from "faker";
 
 import card from "components/listing/card.vue";
+import header from "components/layout/header.vue";
 
 export default {
     components: {
         card,
+        movieHeader: header,
     },
     created() {
         store.dispatch("getMovieList");
@@ -46,7 +50,7 @@ export default {
         styleObj() {
             return {
                 display: "flex",
-                justifyContent: "center"
+                justifyContent: "center",
             };
         },
     },

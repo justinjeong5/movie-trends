@@ -1,7 +1,5 @@
 <template>
     <div id="app">
-        <img alt="Vue logo"
-             :src="logo">
         <popular />
     </div>
 </template>
