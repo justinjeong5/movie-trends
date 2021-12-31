@@ -1,19 +1,36 @@
 <template>
     <div>
-        {{ showList }}
+        <div v-if="hasResult">
+            <div v-for="(v, index) in movieList"
+                 class=""
+                 :key="index">
+                <item :value="v" />
+            </div>
+        </div>
+        <div else>
+            {{ "LOADING" }}
+        </div>
     </div>
 </template>
 
 <script>
 import store from "store";
+import item from "./movie.vue";
 
 export default {
+    components: {
+        item,
+    },
     computed: {
-        showList() {
-            return store.getters.movieList?.results?.length
-                ? store.getters.movieList.results
-                : "No data to display";
+        hasResult() {
+            return !!store.getters.movieList?.results?.length;
         },
+        movieList() {
+            return store.getters.movieList.results;
+        },
+    },
+    created() {
+        store.dispatch("getMovieList");
     },
 };
 </script>
