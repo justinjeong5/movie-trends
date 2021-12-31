@@ -4,9 +4,11 @@
 	"private": true,
 	"scripts": {
 		"build": "webpack --mode production",
-		"start": "webpack-dev-server --mode development"
+		"start": "webpack-dev-server --mode development",
+		"dev": "PROXY=1 npm start"
 	},
 	"dependencies": {
+		"axios": "^0.24.0",
 		"core-js": "^3.6.5",
 		"vue": "^2.6.11"
 	},
@@ -47,10 +49,5 @@
 		"> 1%",
 		"last 2 versions",
 		"not dead"
-	],
-	"proxy": {
-		"/api/*": {
-			"target": "http://localhost:8000"
-		}
-	}
+	]
 }
