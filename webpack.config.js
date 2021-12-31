@@ -1,10 +1,13 @@
+const webpack = require("webpack");
 const { VueLoaderPlugin } = require("vue-loader");
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require("path");
 const jsconfig = require("./jsconfig.json");
-// const env = require("./env");
 
-module.exports = {
+const { DefinePlugin } = webpack;
+const env = require("./env");
+
+const config = {
     entry: {
         main: "./src/main.js",
     },
@@ -36,6 +39,9 @@ module.exports = {
         ],
     },
     plugins: [
+        new DefinePlugin({
+            process: { env: JSON.stringify(env) },
+        }),
         new VueLoaderPlugin(),
         new HtmlWebpackPlugin({
             template: './public/index.html',
@@ -57,4 +63,17 @@ module.exports = {
             {}
         ),
     },
+    devServer: {
+        port: 9000,
+        proxy: {
+            "/api": {
+                target: env.API,
+                pathRewrite: { "^/api": "" },
+                secure: false,
+                changeOrigin: true,
+            },
+        },
+    },
 };
+
+module.exports = config;
