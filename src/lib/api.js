@@ -1,5 +1,6 @@
-import axios from "axios"
-import { API } from "../../env.js"
+import axios from "axios";
+import qs from "qs";
+import { API } from "../../env.js";
 
 const createClient = (...args) => {
     const client = axios.create(...args);
@@ -19,11 +20,14 @@ const createAPIClient = (config = {}, ...args) => {
 };
 
 const withAPI = (path = "") => API + path;
+const withQS = (path = "", { ...query } = {}) =>
+    `${path}?${qs.stringify({ ...query })}`;
 
 export {
     createAPIClient,
     createClient,
     withAPI,
+    withQS,
 };
 
 export default createClient({ baseURL: API });
