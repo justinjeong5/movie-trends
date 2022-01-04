@@ -65,7 +65,7 @@ export default {
             return sizeClass[this.size];
         },
         truncatedDescription() {
-            return truncate(this.description, 150, "...");
+            return truncate(this.description, 120, "...");
         },
         imageUrl() {
             return `${BASE_URL.IMAGE.W500}/${this.src}`;
