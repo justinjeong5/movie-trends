@@ -1,13 +1,13 @@
 <template>
     <div style="margin: 1rem">
         <b-card :title="title"
-                :img-src="getFakerImage()"
+                :img-src="src"
                 :img-alt="alt"
                 img-top
                 :tag="tag"
                 :class="classObj">
             <b-card-text>
-                {{ description }}
+                {{ truncatedDescription }}
             </b-card-text>
             <b-button :href="to"
                       :variant="variant">
@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import faker from "faker";
+import truncate from "lib/truncate";
 import OPTIONS from "lib/options";
 
 const { VARIANT, SIZE } = OPTIONS;
@@ -62,12 +62,10 @@ export default {
             };
             return sizeClass[this.size];
         },
+        truncatedDescription() {
+            return truncate(this.description, 150, "...");
+        },
     },
-    methods: {
-        getFakerImage() {
-            return faker.image.image();
-        }
-    }
 };
 </script>
 
