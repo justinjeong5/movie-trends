@@ -9,6 +9,7 @@
                          :key="index">
                         <card :title="v.title"
                               :description="v.overview"
+                              :src="v.backdrop_path"
                               buttonName="go" />
                     </div>
                 </b-row>

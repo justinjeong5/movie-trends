@@ -1,4 +1,10 @@
 const CONSTANTS = {
+    BASE_URL: {
+        IMAGE: {
+            W500: "https://image.tmdb.org/t/p/w500",
+            ORIGINAL: "https://image.tmdb.org/t/p/original",
+        },
+    },
     BOOTSTRAP: {
         VARIANT: [
             "primary",

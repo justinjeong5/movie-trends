@@ -1,7 +1,7 @@
 <template>
     <div style="margin: 1rem">
         <b-card :title="title"
-                :img-src="src"
+                :img-src="imageUrl"
                 :img-alt="alt"
                 img-top
                 :tag="tag"
@@ -20,8 +20,10 @@
 <script>
 import truncate from "lib/truncate";
 import OPTIONS from "lib/options";
+import CONSTANTS from "lib/constants";
 
 const { VARIANT, SIZE } = OPTIONS;
+const { BASE_URL } = CONSTANTS;
 
 export default {
     props: {
@@ -64,6 +66,9 @@ export default {
         },
         truncatedDescription() {
             return truncate(this.description, 150, "...");
+        },
+        imageUrl() {
+            return `${BASE_URL.IMAGE.W500}/${this.src}`;
         },
     },
 };
