@@ -58,7 +58,9 @@ export default {
             };
         },
         mainImage() {
-            return this.movieList.length && this.movieList[0].backdrop_path;
+            return this.movieList.length
+                ? this.movieList[0].backdrop_path
+                : null;
         },
     },
     methods: {

@@ -23,6 +23,9 @@ export default {
     },
     computed: {
         styleObj() {
+            if (!this.src) {
+                return null;
+            }
             return `background-image: url('${BASE_URL.IMAGE.ORIGINAL}/${this.src}')`;
         },
     },
