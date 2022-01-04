@@ -12,6 +12,6 @@ class Movie {
     static get(id, params = {}) {
         return client.get(`movie/${id}`, { params });
     }
-}
+} 
 
 export default Movie;

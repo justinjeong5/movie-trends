@@ -1,7 +1,8 @@
 <template>
     <div>
         <movie-header title="Movie Trends"
-                      lead="World leading movie trending" />
+                      lead="World leading movie trending"
+                      :src="mainImage" />
         <div v-if="hasResult">
             <b-container>
                 <b-row :style="styleObj">
@@ -55,6 +56,9 @@ export default {
                 display: "flex",
                 justifyContent: "center",
             };
+        },
+        mainImage() {
+            return this.movieList.length && this.movieList[0].backdrop_path;
         },
     },
     methods: {
