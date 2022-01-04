@@ -65,7 +65,7 @@ export default {
                 window.scrollY + window.innerHeight + INFINITY_SCROLL_HEIGHT >=
                 document.documentElement.scrollHeight;
             if (!loadMore) return;
-            throttle(() => store.dispatch("getPopularList"), TIME_THROTTLE);
+            throttle(this.handleLoad, TIME_THROTTLE);
         },
     },
 };
