@@ -1,13 +1,13 @@
 <template>
     <div style="margin: 1rem">
         <b-card :title="title"
-                :img-src="getFakerImage()"
+                :img-src="imageUrl"
                 :img-alt="alt"
                 img-top
                 :tag="tag"
                 :class="classObj">
             <b-card-text>
-                {{ description }}
+                {{ truncatedDescription }}
             </b-card-text>
             <b-button :href="to"
                       :variant="variant">
@@ -18,10 +18,12 @@
 </template>
 
 <script>
-import faker from "faker";
+import truncate from "lib/truncate";
 import OPTIONS from "lib/options";
+import CONSTANTS from "lib/constants";
 
 const { VARIANT, SIZE } = OPTIONS;
+const { BASE_URL } = CONSTANTS;
 
 export default {
     props: {
@@ -62,12 +64,13 @@ export default {
             };
             return sizeClass[this.size];
         },
+        truncatedDescription() {
+            return truncate(this.description, 120, "...");
+        },
+        imageUrl() {
+            return `${BASE_URL.IMAGE.W500}/${this.src}`;
+        },
     },
-    methods: {
-        getFakerImage() {
-            return faker.image.image();
-        }
-    }
 };
 </script>
 

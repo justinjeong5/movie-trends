@@ -9,22 +9,28 @@
                          :key="index">
                         <card :title="v.title"
                               :description="v.overview"
+                              :src="v.poster_path"
                               buttonName="go" />
                     </div>
                 </b-row>
             </b-container>
         </div>
-        <div else>
-            {{ "LOADING" }}
+        <div v-else
+             class="loading">
+            <b-spinner label="Spinning"></b-spinner>
         </div>
     </div>
 </template>
 
 <script>
 import store from "store";
+import throttle from "lib/throttle";
+import CONSTANTS from "lib/constants";
 
 import card from "components/listing/card.vue";
 import header from "components/layout/header.vue";
+
+const { TIME_THROTTLE, INFINITY_SCROLL_HEIGHT } = CONSTANTS;
 
 export default {
     components: {
@@ -32,14 +38,17 @@ export default {
         movieHeader: header,
     },
     created() {
-        store.dispatch("getMovieList");
+        store.dispatch("getPopularList");
+    },
+    mounted() {
+        window.addEventListener("scroll", this.handleScroll);
     },
     computed: {
-        hasResult() {
-            return !!store.getters.movieList?.results?.length;
-        },
         movieList() {
-            return store.getters.movieList.results;
+            return store.getters.popularList;
+        },
+        hasResult() {
+            return !!this.movieList?.length;
         },
         styleObj() {
             return {
@@ -48,8 +57,26 @@ export default {
             };
         },
     },
+    methods: {
+        handleLoad() {
+            store.dispatch("getPopularList");
+        },
+        handleScroll() {
+            const loadMore =
+                window.scrollY + window.innerHeight + INFINITY_SCROLL_HEIGHT >=
+                document.documentElement.scrollHeight;
+            if (!loadMore) return;
+            throttle(this.handleLoad, TIME_THROTTLE);
+        },
+    },
 };
 </script>
 
 <style lang="scss" scoped>
+.loading {
+    height: calc(80vh - 400px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 </style>
