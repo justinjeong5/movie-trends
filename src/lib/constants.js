@@ -13,7 +13,7 @@ const CONSTANTS = {
         SIZE: ["small", "medium", "large"]
     },
     TIME_THROTTLE: 1000,
-    INFINITY_SCROLL_HEIGHT: 1500,
+    INFINITY_SCROLL_HEIGHT: 3000,
 }
 
 export default CONSTANTS;
