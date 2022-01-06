@@ -27,6 +27,7 @@
 		"eslint-plugin-vue": "^6.2.2",
 		"faker": "^5.5.3",
 		"file-loader": "^6.2.0",
+		"glob-parent": "^5.1.2",
 		"html-webpack-plugin": "^5.5.0",
 		"node-sass": "^7.0.1",
 		"sass-loader": "^12.4.0",
