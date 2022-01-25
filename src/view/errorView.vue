@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import router from "./router";
+import router from "view/router";
 import store from "store";
 
 router.beforeEach((to, from, next) => {
