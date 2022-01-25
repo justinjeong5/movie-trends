@@ -6,13 +6,13 @@
         <div v-if="hasResult">
             <b-container>
                 <b-row :style="styleObj">
-                    <div v-for="(v, index) in movieList"
-                         :key="index">
+                    <router-link v-for="(v, index) in movieList"
+                         :key="index"
+                         :to="{ name: 'details', params: { id: v.id }}">
                         <card :title="v.title"
                               :description="v.overview"
-                              :src="v.poster_path"
-                              buttonName="go" />
-                    </div>
+                              :src="v.poster_path" />
+                    </router-link>
                 </b-row>
             </b-container>
         </div>

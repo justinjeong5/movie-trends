@@ -1,22 +1,16 @@
 <template>
-    <div id="app">
-        <popular />
-    </div>
+    <router-view />
 </template>
 
 <script>
-import popular from "view/popular.vue";
-import logo from "assets/logo.png";
+import router from "view/router";
 
 export default {
-    name: "App",
-    components: {
-        popular,
-    },
-    data() {
-        return {
-            logo,
-        };
+    router,
+    watch: {
+        $route(route) {
+            console.log(route);
+        },
     },
 };
 </script>
@@ -26,6 +20,7 @@ export default {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-decoration: none !important;
     text-align: center;
     color: #2c3e50;
 }

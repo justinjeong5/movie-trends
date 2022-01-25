@@ -9,7 +9,8 @@
             <b-card-text>
                 {{ truncatedDescription }}
             </b-card-text>
-            <b-button :href="to"
+            <b-button v-if="buttonName"
+                      :href="to"
                       :variant="variant">
                 {{ buttonName }}
             </b-button>
@@ -39,7 +40,10 @@ export default {
         },
         description: String,
         to: String,
-        buttonName: String,
+        buttonName: {
+            type: String,
+            default: "",
+        },
         variant: {
             type: String,
             default: "primary",
