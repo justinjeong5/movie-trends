@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import popular from "modules/popular.vue";
+import popular from "view/popular.vue";
 import logo from "assets/logo.png";
 
 export default {
