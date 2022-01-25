@@ -47,17 +47,4 @@ export default {
     text-align: center;
     color: #2c3e50;
 }
-
-a {
-    text-decoration: none !important;
-    cursor: pointer;
-    color: #2c3e50;
-
-    &:active,
-    &:focus,
-    &:hover {
-        cursor: pointer;
-        text-decoration: none;
-    }
-}
 </style>

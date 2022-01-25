@@ -1,14 +1,15 @@
 <template>
     <div>
         <movie-header title="Movie Trends"
-                          lead="World leading movie trending"
-                          :src="mainImage" />
+                      lead="World leading movie trending"
+                      :src="mainImage" />
         <div v-if="hasResult">
             <b-container>
                 <b-row :style="styleObj">
                     <router-link v-for="(v, index) in movieList"
                                  :key="index"
-                                 :to="{ name: 'detail', params: { id: v.id }}">
+                                 :to="{ name: 'detail', params: { id: v.id }}"
+                                 class="router-link">
                         <card :title="v.title"
                               :description="v.overview"
                               :src="v.poster_path" />
@@ -83,5 +84,18 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.router-link {
+    text-decoration: none;
+    cursor: pointer;
+    color: #2c3e50;
+
+    &:active,
+    &:focus,
+    &:hover {
+        cursor: pointer;
+        text-decoration: none;
+    }
 }
 </style>
