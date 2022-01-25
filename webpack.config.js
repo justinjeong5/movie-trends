@@ -6,6 +6,17 @@ const jsconfig = require("./jsconfig.json");
 
 const env = require("./env");
 
+const getDevtool = () => {
+    if (env.PROD) {
+        return false;
+    }
+    if (env.WEBPACK_DEVTOOL !== undefined) {
+        return env.WEBPACK_DEVTOOL;
+    }
+
+    return "inline-cheap-module-source-map";
+};
+
 const config = {
     entry: {
         main: "./src/main.js",
@@ -14,6 +25,7 @@ const config = {
         publicPath: '/',
         path: path.resolve(__dirname, "dist"),
     },
+    devtool: getDevtool(),
     module: {
         rules: [
             {
