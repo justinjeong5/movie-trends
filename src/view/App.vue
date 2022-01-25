@@ -6,10 +6,9 @@
 </template>
 
 <script>
-import store from "store";
+import router from "./router";
 
 import ErrorView from "view/errorView.vue";
-import router from "view/router";
 
 export default {
     router,
@@ -17,7 +16,7 @@ export default {
         ErrorView,
     },
     data() {
-        const bufferedError = store.getters.routingError;
+        const bufferedError = this.$store.getters.routingError;
         const errorRoute = bufferedError ? this.$route : null;
         return {
             bufferedError,
@@ -31,26 +30,34 @@ export default {
     },
     watch: {
         error(newVal) {
-            console.log(newVal);
             if (newVal && !this.bufferedError) {
                 this.bufferedError = newVal;
                 this.errorRoute = this.$route;
             }
         },
-        $route(route) {
-            console.log(route);
-        },
     },
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-decoration: none !important;
     text-align: center;
     color: #2c3e50;
+}
+
+a {
+    text-decoration: none !important;
+    cursor: pointer;
+    color: #2c3e50;
+
+    &:active,
+    &:focus,
+    &:hover {
+        cursor: pointer;
+        text-decoration: none;
+    }
 }
 </style>
