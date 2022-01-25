@@ -5,7 +5,7 @@
 	"scripts": {
 		"build": "webpack --mode production",
 		"start": "webpack-dev-server --mode development",
-		"dev": "PROXY=1 npm start"
+		"dev": "PORT=9001 npm start"
 	},
 	"dependencies": {
 		"axios": "^0.24.0",
