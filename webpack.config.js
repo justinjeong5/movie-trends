@@ -74,7 +74,7 @@ const config = {
         ),
     },
     devServer: {
-        port: 9000,
+        port: env.PORT || 9000,
         proxy: {
             "/api": {
                 target: env.API,

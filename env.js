@@ -3,6 +3,7 @@ const VERSION = require("./package.json").version;
 const {
     API,
     PROXY,
+    PORT,
 } = process.env;
 
 const KEY = API || "DEV";
@@ -22,6 +23,7 @@ const env = {
     ENV: KEY,
     API: ENV_API,
     PROXY,
+    PORT,
 };
 
 module.exports = env;
