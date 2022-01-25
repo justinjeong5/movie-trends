@@ -8,7 +8,7 @@
                 <b-row :style="styleObj">
                     <router-link v-for="(v, index) in movieList"
                          :key="index"
-                         :to="{ name: 'details', params: { id: v.id }}">
+                         :to="{ name: 'detail', params: { id: v.id }}">
                         <card :title="v.title"
                               :description="v.overview"
                               :src="v.poster_path" />

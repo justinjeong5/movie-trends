@@ -1,6 +1,6 @@
 <template>
     <div>
-        movie details!!!!
+        {{ "movie details!!!! movie details!!!!" }}
     </div>
 </template>
 
@@ -14,7 +14,7 @@ export default {
     watch: {
         $route: {
             handler(route) {
-                console.log(route);
+                console.log("handler", route);
             },
         },
     },
