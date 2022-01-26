@@ -8,7 +8,6 @@ import detail from "view/movie/detail.vue"
 import contributors from "view/contributors/root.vue"
 
 const router = new VueRouter({
-    mode: "history",
     routes: [
         {
             path: "",
