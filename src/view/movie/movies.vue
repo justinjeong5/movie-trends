@@ -6,13 +6,14 @@
         <div v-if="hasResult">
             <b-container>
                 <b-row :style="styleObj">
-                    <div v-for="(v, index) in movieList"
-                         :key="index">
+                    <router-link v-for="(v, index) in movieList"
+                                 :key="index"
+                                 :to="{ name: 'detail', params: { id: v.id }}"
+                                 class="router-link">
                         <card :title="v.title"
                               :description="v.overview"
-                              :src="v.poster_path"
-                              buttonName="go" />
-                    </div>
+                              :src="v.poster_path" />
+                    </router-link>
                 </b-row>
             </b-container>
         </div>
@@ -24,7 +25,6 @@
 </template>
 
 <script>
-import store from "store";
 import throttle from "lib/throttle";
 import CONSTANTS from "lib/constants";
 
@@ -39,14 +39,14 @@ export default {
         movieHeader: header,
     },
     created() {
-        store.dispatch("getPopularList");
+        this.$store.dispatch("getPopularList");
     },
     mounted() {
         window.addEventListener("scroll", this.handleScroll);
     },
     computed: {
         movieList() {
-            return store.getters.popularList;
+            return this.$store.getters.popularList;
         },
         hasResult() {
             return !!this.movieList?.length;
@@ -65,7 +65,7 @@ export default {
     },
     methods: {
         handleLoad() {
-            store.dispatch("getPopularList");
+            this.$store.dispatch("getPopularList");
         },
         handleScroll() {
             const loadMore =
@@ -84,5 +84,18 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.router-link {
+    text-decoration: none;
+    cursor: pointer;
+    color: #2c3e50;
+
+    &:active,
+    &:focus,
+    &:hover {
+        cursor: pointer;
+        text-decoration: none;
+    }
 }
 </style>
