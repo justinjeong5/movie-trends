@@ -29,7 +29,7 @@ import throttle from "lib/throttle";
 import CONSTANTS from "lib/constants";
 
 import card from "components/listing/card.vue";
-import header from "components/layout/header.vue";
+import header from "components/structure/header.vue";
 
 const { TIME_THROTTLE, INFINITY_SCROLL_HEIGHT } = CONSTANTS;
 
