@@ -3,6 +3,7 @@ import Vuex from "vuex";
 
 import routingErrors from "./routingErrors";
 import movieList from "./movieList";
+import movieDetail from "./movieDetail";
 
 Vue.use(Vuex);
 
@@ -11,5 +12,6 @@ export default new Vuex.Store({
         routingErrors,
 
         movieList,
+        movieDetail,
     },
 });

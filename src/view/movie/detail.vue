@@ -1,6 +1,6 @@
 <template>
     <div>
-        {{ "movie details!!!! movie details!!!!" }}
+        {{ details }}
     </div>
 </template>
 
@@ -11,11 +11,22 @@ export default {
             id: 1,
         };
     },
-    watch: {
-        $route: {
-            handler(route) {
-                console.log("handler", route);
-            },
+    async mounted() {
+        await this.fetchDetails();
+    },
+    computed: {
+        details() {
+            return this.$store.getters.movieDetails;
+        },
+    },
+    methods: {
+        async fetchDetails() {
+            const { params } = this.$route;
+            try {
+                await this.$store.dispatch("getMovieDetails", params.id);
+            } catch (err) {
+                console.error(err);
+            }
         },
     },
 };

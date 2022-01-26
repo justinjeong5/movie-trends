@@ -10,7 +10,7 @@ class Movie {
         return client.get("movies");
     }
     static get(id, params = {}) {
-        return client.get(`movie/${id}`, { params });
+        return client.get(`movies/${id}`, { params });
     }
 }
 
