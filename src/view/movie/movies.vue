@@ -29,7 +29,7 @@ import throttle from "lib/throttle";
 import CONSTANTS from "lib/constants";
 
 import card from "components/listing/card.vue";
-import header from "components/layout/header.vue";
+import header from "components/structure/header.vue";
 
 const { TIME_THROTTLE, INFINITY_SCROLL_HEIGHT } = CONSTANTS;
 
@@ -39,14 +39,14 @@ export default {
         movieHeader: header,
     },
     created() {
-        this.$store.dispatch("getPopularList");
+        this.$store.dispatch("getMovieList");
     },
     mounted() {
         window.addEventListener("scroll", this.handleScroll);
     },
     computed: {
         movieList() {
-            return this.$store.getters.popularList;
+            return this.$store.getters.movieList;
         },
         hasResult() {
             return !!this.movieList?.length;
@@ -65,7 +65,7 @@ export default {
     },
     methods: {
         handleLoad() {
-            this.$store.dispatch("getPopularList");
+            this.$store.dispatch("getMovieList");
         },
         handleScroll() {
             const loadMore =

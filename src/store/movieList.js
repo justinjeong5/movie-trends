@@ -2,29 +2,29 @@ import Movie from "model/movie";
 
 export default {
     state: {
-        popularList: [],
+        movieList: [],
         page: 1,
     },
     getters: {
-        popularList({ popularList }) {
-            return popularList;
+        movieList({ movieList }) {
+            return movieList;
         },
     },
     mutations: {
-        setPopularList(state, results) {
-            state.popularList = [...state.popularList, ...results]
+        setMovieList(state, results) {
+            state.movieList = [...state.movieList, ...results]
         },
         setNextPage(state, page) {
             state.page = page + 1;
         },
     },
     actions: {
-        async getPopularList({ state, commit }) {
+        async getMovieList({ state, commit }) {
             try {
                 const { page } = state;
                 const { data } = await Movie.populars({ page });
                 commit("setNextPage", data.page);
-                commit("setPopularList", data.results);
+                commit("setMovieList", data.results);
             } catch (e) {
                 console.error(e);
             }
